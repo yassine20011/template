@@ -1,6 +1,8 @@
 from django.shortcuts import render
 from django.views.generic.base import TemplateView
 from django.contrib.auth.mixins import LoginRequiredMixin
+from .models import Job
+
 # Create your views here.
 ############ Components ############
 # UI Elements 
@@ -95,8 +97,23 @@ class Materialdesign(LoginRequiredMixin,TemplateView):
 class Themify(LoginRequiredMixin,TemplateView):
     template_name = "components/icons/icons-themify.html"
 
+
+
+
 # Maps
 class Google(LoginRequiredMixin,TemplateView):
     template_name = "components/maps/maps-google.html"
+
+
+
 class Vector(LoginRequiredMixin,TemplateView):
+    model = Job
     template_name = "components/maps/maps-vector.html"
+
+
+
+    def get_context_data(self, **kwargs):
+        context = super(Vector, self).get_context_data(**kwargs)
+        context['jobs'] = Job.objects.all()
+        return context
+

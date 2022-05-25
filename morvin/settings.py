@@ -41,7 +41,9 @@ INSTALLED_APPS = [
     'e_mail',
     'components',
     'layouts',
-    
+
+
+    'import_export', # import_export
     'extras',
     'crispy_forms',
     'django.contrib.sites',
